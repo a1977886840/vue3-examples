@@ -1,20 +1,63 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: "/example01",
+    component: () => import("@/views/example01/Example01.vue")
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/example02",
+    component: () => import("@/views/example02/Example02.vue")
+  },
+  {
+    props: true,
+    path: "/example03/students/:sid/homeworks/:hid",
+    component: () => import("@/views/example03/Example03.vue")
+  },
+  {
+    props: true,
+    path: "/example04-01",
+    component: () => import("@/views/example04/Example04-01.vue")
+  },
+  {
+    props: true,
+    path: "/example04-02",
+    component: () => import("@/views/example04/Example04-02.vue")
+  },
+  {
+    props: true,
+    path: "/example04-03",
+    component: () => import("@/views/example04/Example04-03.vue")
+  },
+  {
+    props: true,
+    path: "/example05-01",
+    component: () => import("@/views/example05/Example05-01.vue")
+  },
+  {
+    props: true,
+    path: "/example05-02",
+    component: () => import("@/views/example05/Example05-02.vue")
+  },
+  {
+    props: true,
+    path: "/example05-03/students/:sid/homeworks/:hid",
+    component: () => import("@/views/example05/Example05-03.vue")
+  },
+  {
+    props: true,
+    path: "/example06-01",
+    component: () => import("@/views/example06/Example06-01.vue")
+  },
+  {
+    props: true,
+    path: "/example06-02",
+    component: () => import("@/views/example06/Example06-02.vue")
+  },
+  {
+    props: true,
+    path: "/example07-01",
+    component: () => import("@/views/example07/Example07-01.vue")
   }
 ];
 
