@@ -1,42 +1,60 @@
 <template>
   <div>
-    <h1>v-text</h1>
+    <h1>composition-api</h1>
     <p>
-      <span v-text="message"></span>
-    </p>
-    <h1>v-if</h1>
-    <p v-if="user.level == 'admin'">此内容仅admin可见</p>
-
-    <template v-if="userNameLogin">
-      <p>vue3.0，input组件默认不会被复用了</p>
-      <input placeholder="Enter your username" />
+      基于composition-api重写example02实例
       <br />
-      <input type="password" placeholder="Enter your password" />
-    </template>
-    <template v-else>
-      <input placeholder="Enter your KEY" />
-    </template>
+      <a href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html">
+        什么是组合式 API？
+      </a>
+    </p>
+    <hr />
+    <h1>ref</h1>
+    <p>
+      ref()函数，支持基本数据类型/数组/对象/数据转为响应式数据，
+      在TS中通过value属性获取/修改，在视图模板直接使用自动拆箱。
+    </p>
+    <p>
+      messageRef为响应式属性，即当其封装的数据改变时，动态响应式改变。
+      <br />
+      messageRef: {{ messageRef }}
+    </p>
+
+    <button type="button" @click="changeUserRef">changeUserRef</button>
     <br />
-    <button v-on:click="changeInput">切换</button>
-    <h1>v-show</h1>
-    <p v-show="close">此内容仅close为true可见</p>
+    {{ userRef?.name }} / {{ userRef?.insertTime }} / {{ userRef?.address }}
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { User } from "@/datasource/Types";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  data: () => ({
-    message: "hello world",
-    admin: true,
-    userNameLogin: true,
-    user: { username: "BO", level: "admin" },
-    close: true
-  }),
-  methods: {
-    changeInput() {
-      this.userNameLogin = !this.userNameLogin;
-    }
+  setup() {
+    const isShow = false;
+    const messageRef = ref("hello");
+    const user: User = {
+      name: "BO",
+      insertTime: "2046-04-09T11:04:25"
+    };
+    const userAsync: User = {
+      name: "SUN",
+      insertTime: "2046-04-09T11:04:25",
+      address: "956"
+    };
+    const userRef = ref(user);
+    const changeUserRef = () => {
+      setTimeout(() => {
+        userRef.value = userAsync;
+      }, 1000);
+    };
+    return {
+      isShow,
+      messageRef,
+      user,
+      userRef,
+      changeUserRef
+    };
   }
 });
 </script>

@@ -1,6 +1,9 @@
 <template>
   <div>
     <p>
+      与视图元素的绑定与vue2完全不同。需要声明元素，以及绑定函数，在视图元素通过:ref绑定函数
+    </p>
+    <p>
       需求：必须同意条款才能选择操作以及提交；必须选择2项才能提交；等于2项时checkbox变为不可用状态
     </p>
     <form>
@@ -14,7 +17,7 @@
           <input
             :ref="chRefs"
             type="checkbox"
-            v-model="selectedCourses"
+            v-model="sCoursesRef"
             :value="{ id: c.id }"
             :disabled="!agreed"
             @change="check"
@@ -26,49 +29,48 @@
       <br />
       <button
         type="button"
-        :disabled="!agreed || !(selectedCourses.length >= amount)"
+        :disabled="!agreed || !(sCoursesRef.length >= amount)"
       >
         submit
       </button>
     </form>
-
-    <p>{{ selectedCourses }}</p>
+    <p>
+      {{ sCoursesRef }}
+    </p>
   </div>
 </template>
 <script lang="ts">
 import { listCourses } from "@/datasource/DataSource";
+import { Course } from "@/datasource/Types";
 import { defineComponent, Ref, ref } from "vue";
 
 function useSelectCourses(
   checkboxs: HTMLInputElement[],
   amount: number,
-  sCourses: Ref<{ id: number }[]>
+  sCourses: Ref<Course[]>
 ) {
   const check = () => {
     const checkboxDis = sCourses.value.length >= amount;
     checkboxs.filter(c => !c.checked).forEach(c => (c.disabled = checkboxDis));
   };
-
   return {
     check
   };
 }
-
+// 模拟曾经选中的数据
+const selectedCourses: Course[] = [{ id: 7 }];
 export default defineComponent({
   setup() {
     const checkboxs: HTMLInputElement[] = [];
     const chRefs = (el: HTMLInputElement) => checkboxs.push(el);
-
     const amount = 2;
-    // 由于是数组，不是对象中的数组，不能使用reactive()函数
-    const selectedCourses = ref([{ id: 7 }]);
+    const sCoursesRef: Ref<Course[]> = ref(selectedCourses);
     const agreed = ref(false);
     const courses = listCourses();
-
-    const { check } = useSelectCourses(checkboxs, amount, selectedCourses);
+    const { check } = useSelectCourses(checkboxs, amount, sCoursesRef);
     return {
       amount,
-      selectedCourses,
+      sCoursesRef,
       agreed,
       courses,
       chRefs,

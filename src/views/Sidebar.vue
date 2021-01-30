@@ -4,7 +4,9 @@
     <ul>
       <li><router-link to="/example01">welcome</router-link></li>
       <li>
-        <router-link to="/example02">data & computed & methods</router-link>
+        <router-link to="/example02">
+          data & computed & methods & watch
+        </router-link>
       </li>
       <li>
         route with params
@@ -21,26 +23,41 @@
           </li>
         </ul>
       </li>
-      <li>
-        directives
-        <ul>
-          <li><router-link to="/example04-01">template & if</router-link></li>
-          <li><router-link to="/example04-02">v-bind</router-link></li>
-          <li><router-link to="/example04-03">v-for</router-link></li>
-        </ul>
-      </li>
+      <li><router-link to="/example03-02">keep-alive</router-link></li>
       <li>
         Composition-API
         <ul>
-          <li><router-link to="/example05-01">setup()</router-link></li>
-          <li><router-link to="/example05-02">Integration</router-link></li>
           <li>
-            <router-link to="/example05-03/students/45/homeworks/23">
-              props
+            <router-link to="/example04-01">
+              interface & ref()
+            </router-link>
+          </li>
+          <li><router-link to="/example04-02">reactive()</router-link></li>
+          <li>
+            <router-link to="/example04-03/students/45/homeworks/23">
+              students/45/homeworks/23
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example04-03/students/18/homeworks/18">
+              students/18/homeworks/18
             </router-link>
           </li>
         </ul>
       </li>
+      <li>
+        directives
+        <ul>
+          <li>
+            <router-link to="/example05-01">template & if & v-bind</router-link>
+          </li>
+          <li>
+            <router-link to="/example05-02">v-bind & watch</router-link>
+          </li>
+          <li><router-link to="/example05-03">v-for</router-link></li>
+        </ul>
+      </li>
+      <li><router-link to="/example05-04">Async Component</router-link></li>
       <li>
         Form Input Bindings
         <ul>
@@ -51,9 +68,41 @@
       <li>
         Vuex
         <ul>
-          <li><router-link to="/example07-01">Examples</router-link></li>
-          <li></li>
-          <li></li>
+          <li>
+            <router-link to="/example07-01">
+              state
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-02">
+              Mutations
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-03">
+              actions
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-04">
+              mapState & Getters
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Passing Data to child component
+        <ul>
+          <li>
+            <router-link to="/example08-01">
+              Example
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example08-02">
+              Example - 2
+            </router-link>
+          </li>
         </ul>
       </li>
     </ul>

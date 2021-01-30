@@ -15,38 +15,39 @@
       </label>
       <br />
       <select v-model="user.title">
-        <option v-for="(t, index) in titles" :key="index" :value="{ id: t.id }">
+        <option v-for="(t, index) of titles" :key="index" :value="{ id: t.id }">
           {{ t.name }}
         </option>
       </select>
       <br />
-      <template v-for="(c, index) in courses" :key="index">
+      <template v-for="(c, index) of courses" :key="index">
         <label>
           <input type="checkbox" v-model="user.courses" :value="{ id: c.id }" />
           {{ c.name }}
         </label>
         <br />
       </template>
-      <button @click="submit" type="button">提交</button>
+      <button type="button">提交</button>
     </form>
     <p>{{ user }}</p>
     <hr />
     <br />
     <input type="file" @change="fileChange($event.target.files[0])" />
     <br />
-    <p>{{ file.name }} / {{ file.size }}</p>
+    <p>{{ file.fileName }} / {{ file.fileSize }}</p>
     <br />
   </div>
 </template>
 <script lang="ts">
 import { listCourses, listTitles } from "@/datasource/DataSource";
 import { User } from "@/datasource/Types.ts";
-import { defineComponent, reactive } from "vue";
+import { defineComponent, Ref, ref } from "vue";
 
-function useFile(file: { name: string; size: string }) {
+function useFile(file: Ref<{ fileName: string; fileSize: string }>) {
   const fileChange = (f: File) => {
-    file.name = f.name;
-    file.size = `${(f.size / 1024 / 1024).toFixed(2)} MB`;
+    console.log(f);
+    file.value.fileName = f.name;
+    file.value.fileSize = `${(f.size / 1024 / 1024).toFixed(2)} MB`;
   };
 
   return {
@@ -56,15 +57,8 @@ function useFile(file: { name: string; size: string }) {
 
 export default defineComponent({
   setup() {
-    const user = reactive({
-      name: "",
-      sex: "",
-      courses: [],
-      title: null
-    } as User);
-    const file = reactive({ name: "", size: "" });
-    console.log(file);
-
+    const user = ref<User>({ courses: [] });
+    const file = ref({ fileName: "", fileSize: "" });
     const titles = listTitles();
     const courses = listCourses();
     const { fileChange } = useFile(file);

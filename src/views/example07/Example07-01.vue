@@ -1,60 +1,42 @@
 <template>
   <div>
-    <p>useStore()函数必须在setup()中使用。可以传递store对象给自定义use函数。</p>
-    <p>{{ user.name }} / {{ user.address }}</p>
-    <hr />
     <p>
-      <input type="text" v-model="myUser.name" />
+      可在视图直接通过$store.state获取state中数据。
       <br />
-      <input type="text" v-model="myUser.address" />
-      <br />
-      <button type="button" @click="update">update</button>
+      {{ $store.state.user.name }} / {{ $store.state.user.address }}
     </p>
     <hr />
     <p>
-      <input type="text" v-model="myUser.name" />
+      useStore()函数必须在setup()中使用。可以传递store对象给自定义use函数。
       <br />
-      <input type="text" v-model="myUser.address" />
+      组件内声明的user变量必须通过计算属性绑定state user。否则state
+      user更新，组件user变量不会响应式更新。
+    </p>
+    <p>{{ userS.name }} / {{ userS.address }}</p>
+    <hr />
+    <p>
+      通过mapState，获取state指定属性名称的值。
       <br />
-      <button type="button" @click="asyncUpdate">asyncUpdate</button>
+      {{ user.name }} / {{ user.address }}
+      <br />
     </p>
   </div>
 </template>
 <script lang="ts">
-import { User } from "@/datasource/Types";
 import { State } from "@/store";
-import { defineComponent, reactive } from "vue";
-import { Store, useStore } from "vuex";
-import { updateUser } from "@/store/VuexTypes.ts";
-
-function useUpdateUser(myUser: User, store: Store<State>) {
-  const update = () => store.commit(updateUser, myUser);
-  return {
-    update
-  };
-}
-
-function useAsyncUpdateUser(myUser: User, store: Store<State>) {
-  const asyncUpdate = () => store.dispatch(updateUser, myUser);
-  return {
-    asyncUpdate
-  };
-}
+import { computed, defineComponent } from "vue";
+import { mapState, Store, useStore } from "vuex";
 
 export default defineComponent({
   setup() {
     const store: Store<State> = useStore();
-    const user = store.state.user;
-
-    const myUser = reactive({});
-    const { update } = useUpdateUser(myUser, store);
-    const { asyncUpdate } = useAsyncUpdateUser(myUser, store);
+    const userS = computed(() => store.state.user);
     return {
-      user,
-      myUser,
-      update,
-      asyncUpdate
+      userS
     };
+  },
+  computed: {
+    ...mapState(["user"])
   }
 });
 </script>

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <h1>data()</h1>
+    <p>
+      {{ message }}
+    </p>
+    <hr />
     <h1>Computed</h1>
     <p>基本绑定，缺少null判断等</p>
     <p>
@@ -12,7 +17,7 @@
     <hr />
     {{ user.name }}
     <br />
-    <button @click="change">change</button>
+    <button type="button" @click="change">change</button>
     <br />
     {{ user.insertTime }}
     <br />
@@ -30,6 +35,12 @@
       计算属性，默认声明的是属性的getter方法，不支持传参。但JS中，参数/属性可以是一个，函数
     </p>
     {{ myReplace(user.insertTime) }}
+    <hr />
+    <h1>watch</h1>
+    <p>
+      watch监听器中允许执行异步方法，当仅仅需要监听当值改变而改变值时，应使用计算属性。
+    </p>
+    <button @click="isShow = !isShow">change isShow</button>
   </div>
 </template>
 <script lang="ts">
@@ -66,6 +77,11 @@ export default defineComponent({
     },
     myReplace() {
       return (date: string) => date.replace("T", " ");
+    }
+  },
+  watch: {
+    isShow(newValue, oldValue) {
+      alert(`新值为${newValue}`);
     }
   }
 });
