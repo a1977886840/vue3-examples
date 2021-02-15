@@ -21,7 +21,7 @@ export default defineComponent({
     const store: Store<State> = useStore();
     const user = computed(() => store.state.user);
     // 创建一个响应式对象用于双向绑定
-    const myUser = ref({} as User);
+    const myUser = ref<User>({});
     // 执行updateUser()函数时，从myUser获取值，创建对象。
     // 而非直接传递myUser对象
     const updateUser = () => {

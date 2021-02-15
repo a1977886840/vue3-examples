@@ -26,7 +26,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup() {
     const message = ref("hello world");
-    const user = ref({ name: "BO", level: 5 } as User);
+    const user = ref<User>({ name: "BO", level: 5 });
     const close = ref(true);
     const userNameLogin = ref(true);
     const changeInput = () => {

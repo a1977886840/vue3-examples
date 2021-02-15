@@ -92,6 +92,67 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
     path: "/example08-02",
     component: () => import("@/views/example08/Example08-02.vue")
+  },
+  {
+    props: true,
+    path: "/example09-01",
+    component: () => import("@/views/example09/Example09-01.vue")
+  },
+  {
+    props: true,
+    path: "/example09-02",
+    component: () => import("@/views/example09/Example09-02.vue")
+  },
+  {
+    props: true,
+    path: "/example10-01",
+    component: () => import("@/views/example10/Example10-01.vue")
+  },
+  {
+    props: true,
+    path: "/example10-02",
+    component: () => import("@/views/example10/Example10-02.vue")
+  },
+  {
+    props: true,
+    path: "/example11-01",
+    component: () => import("@/views/example11/Example11-01.vue"),
+    children: [
+      {
+        // 空，默认加载的组件。
+        // 即路由至/example11-01，router-view直接加载此组件。也可不设置
+        path: "",
+        component: () => import("@/views/example11/About.vue")
+      },
+      {
+        // 声明相对路径。则路由到此组件的路径包含父组件路径
+        // /example11-01/course
+        path: "course",
+        components: {
+          default: () => import("@/views/example11/Course.vue"),
+          button: () => import("@/views/example11/AddCourseButton.vue")
+        }
+      },
+      {
+        // 声明根路径。则路由到此组件的路径不包括父组件路径
+        path: "/homework",
+        components: {
+          default: () => import("@/views/example11/Homework.vue"),
+          button: () => import("@/views/example11/AddHomeworkButton.vue")
+        }
+      }
+      // {
+      //   // 声明相对路径。则路由到此组件的路径包含父组件路径
+      //   // /example11-01/course
+      //   path: "course",
+      //   component: () => import("@/views/example11/Course.vue")
+      // },
+      // {
+      //   // 声明根路径。则路由到此组件的路径不包括父组件路径
+      //   path: "/homework",
+      //   component: () => import("@/views/example11/Homework.vue")
+      // }
+    ]
   }
 ];
 

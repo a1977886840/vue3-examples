@@ -105,6 +105,41 @@
           </li>
         </ul>
       </li>
+      <li>
+        axios
+        <ul>
+          <li>
+            <router-link to="/example09-01">
+              github
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        mock
+        <ul>
+          <li>
+            <router-link to="/example10-01">
+              axios-mock-adapter
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example10-02">
+              axios & mock & vuex
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Nested Routes
+        <ul>
+          <li>
+            <router-link to="/example11-01">
+              Nested Routes
+            </router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>

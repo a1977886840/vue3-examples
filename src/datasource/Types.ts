@@ -34,9 +34,9 @@ export interface GithubUser {
 export interface GithubRepos {
   name?: string;
   html_url?: string;
-  created_at?: string;
+  updated_at?: string;
   language?: string;
   size?: number;
-  forks: number;
+  forks?: number;
   stargazers_count?: number;
 }
