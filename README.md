@@ -21,5 +21,7 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 课程视频资料
 - https://mooc1-1.chaoxing.com/course/208931964.html
 
+### update 2021.02.15
+axios; mock; nested routes
 ### update 2021.01.30
 data/computed/methods/template/route/directives/composition-api/v-bind/v-model/vuex/Passing Data to child component
