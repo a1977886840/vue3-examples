@@ -10,15 +10,17 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 
 ### Development Environments
 开发环境/框架及版本
-- VS Code 1.52.1
-- Node.js 14.15.4
-- Vue 3.0
+- VS Code 1.54
+- Node.js 14.16
+- Vue ^3.0.5
 - Git 2.30
+- http://pan-yz.chaoxing.com/share/info/0a16112df51f8d40
+
 ### Documents
  - https://github.com/bwhyman/vue3-examples/wiki
 
 ### Course Details
-课程视频资料
+在线课程课
 - https://mooc1-1.chaoxing.com/course/208931964.html
 
 ### update 2021.02.15
