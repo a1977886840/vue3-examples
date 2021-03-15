@@ -9,7 +9,7 @@
   "eslint.validate": ["typescript"],
   "update.enableWindowsBackgroundUpdates": false,
   "git.enableSmartCommit": true,
-  // "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Default Light+",
   "update.mode": "none",
   "editor.suggestSelection": "first",
   "typescript.updateImportsOnFileMove.enabled": "always"

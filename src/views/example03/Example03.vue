@@ -20,14 +20,16 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   props: ["sid", "hid"],
-
-  // 在使用时支持类型检测
-  // props: {
-  //   sid: Number,
-  //   hid: Number
-  // },
-  setup(props) {
-    console.log(props.sid);
+  created() {
+    this.init();
+  },
+  beforeUpdate() {
+    this.init();
+  },
+  methods: {
+    init() {
+      console.log(this.sid);
+    }
   }
 });
 </script>

@@ -29,7 +29,7 @@
         <ul>
           <li>
             <router-link to="/example04-01">
-              interface & ref()
+              interface & ref() & computed() & watch()
             </router-link>
           </li>
           <li><router-link to="/example04-02">reactive()</router-link></li>

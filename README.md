@@ -6,7 +6,7 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 主讲教师：王波老师
 
 课程前部分，基于springboot/spring-cloud框架的后端微服务架构、设计思想与实现技术。  
-课程后部分，基于TypeScript+Vue3.0框架的前端MVVM设计模式、组件化设计与单页面开发技术。
+课程后部分，基于TypeScript/Vue3.0框架的前端MVVM设计模式、组件化设计与单页面开发技术。
 
 ### Development Environments
 开发环境/框架及版本
@@ -20,7 +20,7 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
  - https://github.com/bwhyman/vue3-examples/wiki
 
 ### Course Details
-在线课程课
+在线课程
 - https://mooc1-1.chaoxing.com/course/208931964.html
 
 ### update 2021.02.15
