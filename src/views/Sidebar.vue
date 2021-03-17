@@ -32,6 +32,7 @@
               interface & ref() & computed() & watch()
             </router-link>
           </li>
+          <li><router-link to="/example04-04">Composition</router-link></li>
           <li><router-link to="/example04-02">reactive()</router-link></li>
           <li>
             <router-link to="/example04-03/students/45/homeworks/23">

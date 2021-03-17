@@ -19,8 +19,8 @@ import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   props: {
-    sid: Number,
-    hid: Number
+    sid: String,
+    hid: String
   },
   setup(props) {
     const sidR = ref(props.sid);
