@@ -15,7 +15,7 @@ import { User } from "@/datasource/Types";
 import { State } from "@/store";
 import { computed, defineComponent, Ref, ref } from "vue";
 import { Store, useStore } from "vuex";
-import { UPDATE_USER } from "@/store/VuexTypes.ts";
+import { UPDATE_USER } from "@/store/VuexTypes";
 
 function useAsyncUpdateUser(myUser: Ref<User>, store: Store<State>) {
   const asyncUpdate = () =>

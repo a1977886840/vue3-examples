@@ -40,16 +40,19 @@
 </template>
 <script lang="ts">
 import { listCourses, listTitles } from "@/datasource/DataSource";
-import { User } from "@/datasource/Types.ts";
+import { User } from "@/datasource/Types";
 import { defineComponent, Ref, ref } from "vue";
 
-function useFile(file: Ref<{ fileName: string; fileSize: string }>) {
+interface VFile {
+  fileName: string;
+  fileSize: string;
+}
+function useFile(file: Ref<VFile>) {
   const fileChange = (f: File) => {
     console.log(f);
     file.value.fileName = f.name;
     file.value.fileSize = `${(f.size / 1024 / 1024).toFixed(2)} MB`;
   };
-
   return {
     fileChange
   };

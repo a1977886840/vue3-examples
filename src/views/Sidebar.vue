@@ -67,6 +67,11 @@
         </ul>
       </li>
       <li>
+        <router-link to="/example06-03">
+          Homework - 1
+        </router-link>
+      </li>
+      <li>
         Vuex
         <ul>
           <li>
@@ -91,6 +96,7 @@
           </li>
         </ul>
       </li>
+
       <li>
         Passing Data to child component
         <ul>

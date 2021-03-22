@@ -20,17 +20,13 @@
             v-model="sCoursesRef"
             :value="{ id: c.id }"
             :disabled="!agreed"
-            @change="check"
           />
           {{ c.name }}
         </label>
         <br />
       </template>
       <br />
-      <button
-        type="button"
-        :disabled="!agreed || !(sCoursesRef.length >= amount)"
-      >
+      <button type="button" :disabled="!agreed || sCoursesRef.length < amount">
         submit
       </button>
     </form>
@@ -42,21 +38,8 @@
 <script lang="ts">
 import { listCourses } from "@/datasource/DataSource";
 import { Course } from "@/datasource/Types";
-import { defineComponent, Ref, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 
-function useSelectCourses(
-  checkboxs: HTMLInputElement[],
-  amount: number,
-  sCourses: Ref<Course[]>
-) {
-  const check = () => {
-    const checkboxDis = sCourses.value.length >= amount;
-    checkboxs.filter(c => !c.checked).forEach(c => (c.disabled = checkboxDis));
-  };
-  return {
-    check
-  };
-}
 // 模拟曾经选中的数据
 const selectedCourses: Course[] = [{ id: 7 }];
 export default defineComponent({
@@ -64,17 +47,21 @@ export default defineComponent({
     const checkboxs: HTMLInputElement[] = [];
     const chRefs = (el: HTMLInputElement) => checkboxs.push(el);
     const amount = 2;
-    const sCoursesRef: Ref<Course[]> = ref(selectedCourses);
+    const sCoursesRef = ref<Course[]>(selectedCourses);
     const agreed = ref(false);
     const courses = listCourses();
-    const { check } = useSelectCourses(checkboxs, amount, sCoursesRef);
+    watch(sCoursesRef, () => {
+      const checkboxDis = sCoursesRef.value.length >= amount;
+      checkboxs
+        .filter(c => !c.checked)
+        .forEach(c => (c.disabled = checkboxDis));
+    });
     return {
       amount,
       sCoursesRef,
       agreed,
       courses,
-      chRefs,
-      check
+      chRefs
     };
   }
 });
