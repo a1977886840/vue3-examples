@@ -91,7 +91,9 @@ const myActions: ActionTree<State, State> = {
 };
 
 const myGetters: GetterTree<State, State> = {
-  premission: state => (level: number) => state.user?.level == level
+  premission: state => (level: number) => state.user?.level == level,
+  [vxt.GETTER_PREMISSION]: state => (level: number) =>
+    state.user?.level == level
 };
 export default createStore({
   state: myState,
