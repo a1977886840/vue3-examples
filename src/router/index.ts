@@ -70,8 +70,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     props: true,
-    path: "/example06-03",
-    component: () => import("@/views/example06/Example06-03.vue")
+    path: "/homework01",
+    component: () => import("@/views/homework01/Homework01.vue")
   },
   {
     props: true,

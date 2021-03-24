@@ -35,7 +35,12 @@
     </table>
 
     <p>{{ courseEditedName }}</p>
-    <editbutton2 v-if="active" :course="courseEdit" @emitClose="onEmitClose" />
+    <editbutton2
+      v-if="active"
+      :course="courseEdit"
+      @emitClose="active = false"
+      @emitSubmit="onEmitSubmit"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -54,7 +59,7 @@ export default defineComponent({
     const active = ref(false);
     const courseEditedName = ref("");
     const courseEdit: Ref<Course> = ref({});
-    const onEmitClose = (name: string) => {
+    const onEmitSubmit = (name: string) => {
       active.value = false;
       courseEditedName.value = name;
     };
@@ -62,7 +67,7 @@ export default defineComponent({
       courseEdit,
       active,
       courses,
-      onEmitClose,
+      onEmitSubmit,
       courseEditedName
     };
   }

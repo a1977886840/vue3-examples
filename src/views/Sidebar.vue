@@ -67,7 +67,7 @@
         </ul>
       </li>
       <li>
-        <router-link to="/example06-03">
+        <router-link to="/homework01">
           Homework - 1
         </router-link>
       </li>

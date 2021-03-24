@@ -38,7 +38,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, Ref, ref } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { Course } from "@/datasource/Types";
 
 export default defineComponent({
@@ -49,7 +49,7 @@ export default defineComponent({
     const active = ref(false);
     // 应创建一个新响应式对象
     // 与双向绑定的输入框修改vuex state数据相似
-    const courseR: Ref<Course> = ref({ name: props.course?.name });
+    const courseR = ref<Course>({ name: props.course?.name });
     return {
       active,
       courseR

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <div class="modal" @click="$emit('emitClose', courseR.name)"> -->
-    <div class="modal">
+    <div class="modal" @click="$emit('emitClose')">
       <div class="modal-dialog" @click.stop>
         <div class="modal-header">
           <h3>Modal title</h3>
@@ -44,7 +44,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, Ref, ref, SetupContext } from "vue";
+import { defineComponent, PropType, ref, SetupContext } from "vue";
 import { Course } from "@/datasource/Types";
 
 export default defineComponent({
@@ -53,8 +53,8 @@ export default defineComponent({
   },
 
   setup(props, { emit }: SetupContext) {
-    const courseR: Ref<Course> = ref({ name: props.course?.name });
-    const submit = () => emit("emitClose", courseR.value.name);
+    const courseR = ref<Course>({ name: props.course?.name });
+    const submit = () => emit("emitSubmit", courseR.value.name);
     return {
       courseR,
       submit
